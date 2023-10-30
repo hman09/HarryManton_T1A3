@@ -67,38 +67,67 @@ r1 = txtadv.Rooms('locked', 'key')
 # and elif and else (later the elif will include all prompts)
 # make the position return to 0 when entering a diffenet prompt
 
-r1.inv.position.east = 1
+# r1.inv.position.east = 1
 
-print(f'{user.position.__dict__}')
+# print(f'{user.position.__dict__}')
 
-while user.levels_complete < 2:
-    RefreshInput = input()
-    if RefreshInput == 'FaceN':
-        user.position.north = 1
-        user.position.east = 0
-        user.position.south = 0
-        user.position.west = 0
-    elif RefreshInput == 'FaceE':
-        user.position.north = 0
-        user.position.east = 1
-        user.position.south = 0
-        user.position.west = 0
-    elif RefreshInput == 'FaceS':
-        user.position.north = 0
-        user.position.east = 0
-        user.position.south = 1
-        user.position.west = 0
-    elif RefreshInput == 'FaceW':
-        user.position.north = 0
-        user.position.east = 0
-        user.position.south = 0
-        user.position.west = 1
-    user.levels_complete += 1
+# while user.levels_complete < 2:
+#     RefreshInput = input()
+#     if RefreshInput == 'FaceN':
+#         user.position.north = 1
+#         user.position.east = 0
+#         user.position.south = 0
+#         user.position.west = 0
+#     elif RefreshInput == 'FaceE':
+#         user.position.north = 0
+#         user.position.east = 1
+#         user.position.south = 0
+#         user.position.west = 0
+#     elif RefreshInput == 'FaceS':
+#         user.position.north = 0
+#         user.position.east = 0
+#         user.position.south = 1
+#         user.position.west = 0
+#     elif RefreshInput == 'FaceW':
+#         user.position.north = 0
+#         user.position.east = 0
+#         user.position.south = 0
+#         user.position.west = 1
+#     user.levels_complete += 1
 
-print(f'{user.position.__dict__}')
-
-
-# this was initial solution but to much repetition, will brainstorm nicer method
+# print(f'{user.position.__dict__}')
 
 
+# Above was initial solution but to much repetition, will brainstorm nicer method
+# maybe put all prompts inside a single library 
+# testing by making it call a function that says prints 'Hi'
+# didnt work well, made a elif and it call the function. seems to work better will test on main.py with the help
+
+# def hi():
+#     print('Hi')
+
+# r1.inv.position.east = 1
+
+# print(f'{user.position.__dict__}')
+
+# user_commands = {
+#     'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
+#     'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
+#     'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
+#     'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1}
+#     }
+
+# while user.levels_complete < 1:
     
+#     fresh_input = input()
+#     if fresh_input in user_commands:
+#         user.position = user_commands[fresh_input]
+#         print(f'{user.position}')
+
+#     elif fresh_input == 'hi':
+#         hi()
+
+#     user.levels_complete += 1
+
+# will proceed as above as it works will with the help. will change lib name to precify direction.
+

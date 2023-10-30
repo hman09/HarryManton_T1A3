@@ -65,9 +65,28 @@ user = txtadv.Player(username, tutorial, 0)
 
 r1 = txtadv.Rooms('locked', 'key')
 
-user.position.east = 1
-
 r1.inv.position.east = 1
+
+print(f'{user.position.__dict__}')
+
+user_direction = {
+    'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
+    'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
+    'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
+    'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1},
+}
+
+while user.levels_complete < 2:
+    
+    fresh_input = input()
+    if fresh_input in user_direction:
+        user.position = user_direction[fresh_input]
+    elif fresh_input == 'Help':
+        help()
+
+    user.levels_complete += 1
+
+print(f'{user.position}')
     
 
 #tut()
@@ -85,4 +104,3 @@ r1.inv.position.east = 1
 # current_datetime = datetime.datetime.now()
 # print(f'Congratulations {user.name} you finished the game!!', current_datetime)
 
-print(f'{r1.inv.position.__dict__}')
