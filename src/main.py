@@ -39,8 +39,8 @@ def help():
             print('FaceE : will make the user face East')
             print('FaceS : will make the user face South')
             print('FaceW : will make the user face West')
-            print('pickupX : will allow you to pick up object X.')
-            print('useX : will allow you to use object X, if possible')
+            print('Pickup : will allow you to pick up object X.')
+            print('UseX : will allow you to use object X, if possible')
             print('Giveup : will end game')
             # insert cat pic
             # give user opt to repeat the tutorial
@@ -64,8 +64,8 @@ tutorial = 'N'#input('Do you want the tutorial?(Y/N) ')
 user = txtadv.Player(username, tutorial, 0)
 
 r1 = txtadv.Rooms('locked', 'key')
-
-r1.inv.position.east = 1
+r1.inv.items = ['Mirror Peice']
+r1.inv.position = {"north": 0, "east": 1, "south": 0, "west": 0}
 
 print(f'{user.position.__dict__}')
 
@@ -82,27 +82,29 @@ while user.levels_complete < 2:
 
     if fresh_input in user_direction:
         user.position = user_direction[fresh_input]
-        
+
+    elif fresh_input == 'Pickup' and user.position == r1.inv.position:
+        user.inv = r1.inv
+
     elif fresh_input == 'Help':
         help()
 
+    elif fresh_input == 'Giveup':
+        user.levels_complete = 10
+
+
+
     user.levels_complete += 1
 
-print(f'{user.position}')
+print(f'{user.inv.items}')
     
-
-#tut()
-#room()
-#help()
-
-# while user.levels_complete == 0:
-    
+   
 
 
 
 
-
+# make a variable called ending to decide whether to congratulate or say better luck next time.
 # put everything above here and uncomment at the end
-# current_datetime = datetime.datetime.now()
-# print(f'Congratulations {user.name} you finished the game!!', current_datetime)
+current_datetime = datetime.datetime.now()
+print(f'Congratulations {user.name} you finished the game!!', current_datetime)
 
