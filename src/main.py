@@ -6,6 +6,7 @@ import datetime
 # game will need to be in loop with the final stage closing the loop and ending the game
 # add end of game message outside of above mentioned loop
 # make r1 loop
+# making the tutorial before the room will help me define the room
 
 def tut():
     while user.first_try == 'Y':
@@ -16,6 +17,43 @@ def room():
     while r1.lock == 'locked':
         input()
         r1.lock = 'unlocked'
+
+def help():
+    print('All rooms have a locked door and a condition that must be solved to unlock it.')
+    prompt =  'nothing'
+    while prompt != 'Exit':
+        prompt =  input('Please enter: Clue, More or Exit. ')
+        if prompt == 'Clue':
+            # Clue can later be created into class so mitigate repetition. Make if more than 1 rooms are made.
+            # Nest prints into if statemnts to relay relavent clue
+            print('Have you looked around?')
+            print('Try putting the mirror under the light')
+            print('Is that a key on the wall?')
+                  
+        elif prompt == 'More':
+            print('Below is a list of prompts, followed by their functionality.')
+            # Was going to make a list of prompts and description, 
+            # then make a loop which going through the list and prints them out for line by line output.
+            # But feels redundant as will only need a print command here.
+            print('FaceN : will make the user face North')
+            print('FaceE : will make the user face East')
+            print('FaceS : will make the user face South')
+            print('FaceW : will make the user face West')
+            print('pickupX : will allow you to pick up object X.')
+            print('useX : will allow you to use object X, if possible')
+            print('Giveup : will end game')
+            # insert cat pic
+            # give user opt to repeat the tutorial
+            user.first_try = input('Do you want the tutorial repeated? (Y/N) ')
+            tut()
+            
+
+        elif prompt == 'Exit':
+            return prompt == 'Exit'
+        
+        else:
+            print('Invalid prompt. Please try again')
+            prompt =  input('Please enter: Clue, More or Exit. ')
 
 
 
@@ -28,9 +66,9 @@ user = txtadv.Player(username, tutorial, 0)
 r1 = txtadv.Rooms('locked', 'key')
     
 
-tut()
-room()
-print(r1.lock)
+#tut()
+#room()
+#help()
 
 # while user.levels_complete == 0:
     
@@ -43,3 +81,4 @@ print(r1.lock)
 # current_datetime = datetime.datetime.now()
 # print(f'Congratulations {user.name} you finished the game!!', current_datetime)
 
+print(f'{user.position.__dict__}')
