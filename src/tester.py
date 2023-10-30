@@ -1,7 +1,8 @@
-# # I have made this file as a tester to make individual aspecsts instead of cluddering main.py
+# I have made this file as a tester to make individual aspecsts instead of cluddering main.py
+# my initial thought was not to include, but shows development.
 
 import txtadv
-import datetime
+import datetime, random
 
 username = 'H'
 tutorial = 'N'
@@ -131,3 +132,67 @@ r1 = txtadv.Rooms('locked', 'key')
 
 # will proceed as above as it works will with the help. will change lib name to precify direction.
 
+# make it so if the user has the same position as the rooms item the user can pickup the thing
+# need to make the inv 
+# print 'can pickup' if users position is same as items
+# was running into problem and couldnt get print out below. found that r1.position.east = 1 was rearranging the dict and so wants equal.
+
+
+# r1.inv.items = ['Mirror Peice']
+# r1.inv.position = {"north": 0, "east": 1, "south": 0, "west": 0}
+# # r1.inv.position.east = 1
+
+# user_commands = {
+#     'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
+#     'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
+#     'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
+#     'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1}
+#     }
+
+# while user.levels_complete < 3:
+    
+#     fresh_input = input()
+
+#     if fresh_input in user_commands:
+#         user.position = user_commands[fresh_input]
+#         print(f'{user.position}')
+
+#     elif fresh_input == 'pickup' and user.position == r1.inv.position:
+#         print('can pick up')
+
+    
+
+#     user.levels_complete += 1
+
+# print(f'{r1.inv.items}, {r1.inv.position.__dict__}')
+
+# will continue below and keep above to show errors/ resolutions
+
+# make user inv = room inv if condition is true
+
+r1.inv.items = ['Mirror Peice']
+r1.inv.position = {"north": 0, "east": 1, "south": 0, "west": 0}
+
+user_commands = {
+    'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
+    'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
+    'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
+    'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1}
+    }
+
+while user.levels_complete < 3:
+    
+    fresh_input = input()
+
+    if fresh_input in user_commands:
+        user.position = user_commands[fresh_input]
+        print(f'{user.position}')
+
+    elif fresh_input == 'pickup' and user.position == r1.inv.position:
+        user.inv = r1.inv
+
+        
+
+    user.levels_complete += 1
+
+print(f'{user.inv.items}')

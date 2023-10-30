@@ -79,8 +79,10 @@ user_direction = {
 while user.levels_complete < 2:
     
     fresh_input = input()
+
     if fresh_input in user_direction:
         user.position = user_direction[fresh_input]
+        
     elif fresh_input == 'Help':
         help()
 
