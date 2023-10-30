@@ -3,13 +3,15 @@
 
 import txtadv
 import datetime, random
+from cat_picture.cat import pic
+
 
 username = 'H'
 tutorial = 'N'
 
 user = txtadv.Player(username, tutorial, 0)
 
-r1 = txtadv.Rooms('locked', 'key')
+r1 = txtadv.Rooms('locked', 'key', 0)
 
 # # tutorial
 # # make a function that is in the main loop so can be called whenever
@@ -170,29 +172,49 @@ r1 = txtadv.Rooms('locked', 'key')
 
 # make user inv = room inv if condition is true
 
-r1.inv.items = ['Mirror Peice']
-r1.inv.position = {"north": 0, "east": 1, "south": 0, "west": 0}
+# r1.inv.items = ['Mirror Peice']
+# r1.inv.position = {"north": 0, "east": 1, "south": 0, "west": 0}
 
-user_commands = {
-    'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
-    'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
-    'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
-    'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1}
-    }
+# user_commands = {
+#     'FaceN': {"north": 1, "east": 0, "south": 0, "west": 0},
+#     'FaceE': {"north": 0, "east": 1, "south": 0, "west": 0},
+#     'FaceS': {"north": 0, "east": 0, "south": 1, "west": 0},
+#     'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1}
+#     }
 
-while user.levels_complete < 3:
+# while user.levels_complete < 3:
     
-    fresh_input = input()
+#     fresh_input = input()
 
-    if fresh_input in user_commands:
-        user.position = user_commands[fresh_input]
-        print(f'{user.position}')
+#     if fresh_input in user_commands:
+#         user.position = user_commands[fresh_input]
+#         print(f'{user.position}')
 
-    elif fresh_input == 'pickup' and user.position == r1.inv.position:
-        user.inv = r1.inv
+#     elif fresh_input == 'pickup' and user.position == r1.inv.position:
+#         user.inv = r1.inv
 
         
 
-    user.levels_complete += 1
+#     user.levels_complete += 1
 
-print(f'{user.inv.items}')
+# print(f'{user.inv.items}')
+
+# Make it so the 1 is random everytime the program runs
+
+
+
+# r1.inv.position = {"north": 0, "east": 0, "south": 0, "west": 0}
+
+# positions = ["north", "east", "south", "west"]
+# random.shuffle(positions)
+
+# r1.inv.position[positions[0]] = 1
+
+# print(f'{r1.inv.position}')
+
+# test with the cat package
+
+cat = input()
+
+if cat != 0:
+    pic()

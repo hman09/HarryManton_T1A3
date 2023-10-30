@@ -13,10 +13,11 @@ class Inventory:
 
 
 class Rooms:   
-    def __init__(self, lock, condition):
+    def __init__(self, lock, enviroment, progress):
         self.lock = lock
-        self.condition = condition
+        self.enviroment = enviroment
         self.inv = Inventory([])
+        self.progress = progress
 
 
 class Position:
