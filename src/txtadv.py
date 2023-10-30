@@ -9,6 +9,7 @@ class Player:
 class Inventory:
     def __init__(self, items):
         self.items = items
+        self.position = Position(0,0,0,0)
 
 
 class Rooms:   
@@ -27,4 +28,4 @@ class Position:
 
 class Condition:
     def __init__(self):
-        self.positions = Position()
+        self.positions = Position(0,0,0,0)

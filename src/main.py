@@ -64,6 +64,10 @@ tutorial = 'N'#input('Do you want the tutorial?(Y/N) ')
 user = txtadv.Player(username, tutorial, 0)
 
 r1 = txtadv.Rooms('locked', 'key')
+
+user.position.east = 1
+
+r1.inv.position.east = 1
     
 
 #tut()
@@ -81,4 +85,4 @@ r1 = txtadv.Rooms('locked', 'key')
 # current_datetime = datetime.datetime.now()
 # print(f'Congratulations {user.name} you finished the game!!', current_datetime)
 
-print(f'{user.position.__dict__}')
+print(f'{r1.inv.position.__dict__}')

@@ -1,7 +1,14 @@
 # # I have made this file as a tester to make individual aspecsts instead of cluddering main.py
 
-# import txtadv
-# import datetime
+import txtadv
+import datetime
+
+username = 'H'
+tutorial = 'N'
+
+user = txtadv.Player(username, tutorial, 0)
+
+r1 = txtadv.Rooms('locked', 'key')
 
 # # tutorial
 # # make a function that is in the main loop so can be called whenever
@@ -50,3 +57,48 @@
 # instead now creating the Position class first then the rooms objecsts and the player at none
 
 
+
+
+# a position has been made for the rooms inv. (will use positions as a boolean, 0/1.)
+# make a open loop that allows a player to face a direction on input
+# make 2 print out. 1, is the initial. 2, is after input. should looke like below
+# 1. {'north': 0, 'south': 0, 'east': 0, 'west': 0}
+# 2. {'north': 1, 'south': 0, 'east': 0, 'west': 0}
+# and elif and else (later the elif will include all prompts)
+# make the position return to 0 when entering a diffenet prompt
+
+r1.inv.position.east = 1
+
+print(f'{user.position.__dict__}')
+
+while user.levels_complete < 2:
+    RefreshInput = input()
+    if RefreshInput == 'FaceN':
+        user.position.north = 1
+        user.position.east = 0
+        user.position.south = 0
+        user.position.west = 0
+    elif RefreshInput == 'FaceE':
+        user.position.north = 0
+        user.position.east = 1
+        user.position.south = 0
+        user.position.west = 0
+    elif RefreshInput == 'FaceS':
+        user.position.north = 0
+        user.position.east = 0
+        user.position.south = 1
+        user.position.west = 0
+    elif RefreshInput == 'FaceW':
+        user.position.north = 0
+        user.position.east = 0
+        user.position.south = 0
+        user.position.west = 1
+    user.levels_complete += 1
+
+print(f'{user.position.__dict__}')
+
+
+# this was initial solution but to much repetition, will brainstorm nicer method
+
+
+    
