@@ -6,6 +6,7 @@ import datetime, random
 from cat_picture.cat import pic
 
 
+
 username = 'H'
 tutorial = 'N'
 
@@ -214,7 +215,39 @@ r1 = txtadv.Rooms('locked', 'key', 0)
 
 # test with the cat package
 
-cat = input()
+# cat = input()
 
-if cat != 0:
-    pic()
+# if cat != 0:
+#     pic()
+
+#colort for coloring text
+# print hello green and gooodbye with a blue background
+
+
+from colort import colorize, ForegroundColor as fc, Style, BackgroundColor as bc
+
+# colored_text = colorize('Hello', fc.GREEN)
+# colored_background = colorize('Goodbye', bc.BLUE)
+
+# input(colored_text)
+# print(colored_background)
+
+# make the below repeatable
+
+# input((colorize('You wake up in darkness. There is 1 thing on your mind Escape!', bc.RED)))
+# input((colorize('The Room is almost completely black, there is however a small column of light.', bc.RED)))
+
+# # there is the input then inside the mod and within that 2 variables
+
+# def test(text, color):
+#     print(colorize(text, color))
+
+# narrator = bc.RED
+
+# test('1', narrator)
+
+# test  colors
+
+colored_text = colorize('Hello', fc.LIGHT_BLUE)
+print(colored_text)
+

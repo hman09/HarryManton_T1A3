@@ -1,6 +1,7 @@
 import txtadv
 import datetime, random
 from cat_picture.cat import pic
+from colort import colorize, ForegroundColor as fc, Style, BackgroundColor as bc
 
 # let user be able to set name
 # make class for user, room and inventory
@@ -11,6 +12,11 @@ from cat_picture.cat import pic
 # added progress to Room, now making clue a function that will call the relevant clue based on room progess
 # Make item poisiton Random with random mod
 # need to cap the progress counter to the max clue index
+# putting in styled text to differentiate between outputs
+# will need to categorise the texts into different parts (User Prompt, Help, Narrator)
+# Cleaning and reading for submissions
+
+
 
 Clues = [
     'Have you looked around?',
@@ -68,7 +74,9 @@ def help():
             print('Invalid prompt. Please try again')
             prompt =  input('Please enter: Clue, More or Exit. ')
 
-
+narrator = bc.RED
+user_prompt = bc.LIGHT_BLUE
+helper = bc.GREEN
 
 # Main
 username = 'H'#input('What is your name? ')
@@ -82,19 +90,34 @@ r1.inv.position = {"north": 0, "east": 0, "south": 0, "west": 0}
 positions = ["north", "east", "south", "west"]
 random.shuffle(positions)
 r1.inv.position[positions[0]] = 1
-input('You wake up in darkness. There is 1 thing on your mind Escpae!')
-input('The Room is almost completely black, there is however a small column of light.')
+
+
+# def opening_naration():
+#     input((colorize('You wake up in darkness. There is 1 thing on your mind Escape!', bc.RED)))
+#     input((colorize('The Room is almost completely black, there is however a small column of light.', bc.RED)))
+
+# opening_naration()
+
+def colour_text(text, color):
+    input(colorize(text, color))
+
+
+colour_text('You wake up in darkness. There is 1 thing on your mind Escape!', narrator)
+colour_text('The Room is almost completely black, there is however a small column of light.', narrator)
 
 
 
 while user.levels_complete < 1:
 
+    # fresh_input = colour_text('Your Move: ', user_prompt)
     fresh_input = input()
 
     if fresh_input in user_direction:
         user.position = user_direction[fresh_input]
         if user.position == r1.inv.position:
             print('You Found a Mirror Peice on the ground.')
+        elif user.position != r1.inv.position:
+            print('There is nothing there.')
 
     elif fresh_input == 'Pickup' and user.position == r1.inv.position:
         user.inv = r1.inv
