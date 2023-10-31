@@ -1,7 +1,7 @@
 import txtadv
 import datetime, random
 from cat_picture.cat import pic
-from colort import colorize, ForegroundColor as fc, Style, BackgroundColor as bc
+from colort import colorize, ForegroundColor as fc, BackgroundColor as bc
 
 # let user be able to set name
 # make class for user, room and inventory
@@ -31,30 +31,37 @@ user_direction = {
     'FaceW': {"north": 0, "east": 0, "south": 0, "west": 1},
 }
 
+def colour_text(text, color):
+    input(colorize(text, color))
+
 def tut():
     while user.first_try == 'Y':
-        print('Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah')
-        user.first_try = 'N'
+        print('Welcome to the Escape Room!')
+        colour_text('When you see text like with press enter to move on', narrator)
+        print('when the terminal like below. enter one of your user commands. Try: Help')
+        first_prompt = input()
+        if first_prompt == 'Help':
+            help()
+            user.first_try = 'N'
+        else:
+            print('You need to enter Help correctly to continue.')
+        
 
 def room():
     while r1.lock == 'locked':
-        input()
+        colour_text('When you see text with the red background(like is) it will wait for your to press enter before continuing', narrator)
         r1.lock = 'unlocked'
 
-
 def help():
-    print('All rooms have a locked door and a that must be solved to unlock it.')
+    print('All rooms have a locked door and a puzzle that must be solved to unlock it.')
     prompt =  'nothing'
     while prompt != 'Exit':
-        prompt =  input('Please enter: Clue, More or Exit. ')
+        prompt =  input('Please enter: Clue, Commands or Exit, to return to the game. ')
         if prompt == 'Clue':
             print(Clues[r1.progress])
                   
-        elif prompt == 'More':
+        elif prompt == 'Commands':
             print('Below is a list of prompts, followed by their functionality.')
-            # Was going to make a list of prompts and description, 
-            # then make a loop which going through the list and prints them out for line by line output.
-            # But feels redundant as will only need a print command here.
             print('FaceN : will make the user face North')
             print('FaceE : will make the user face East')
             print('FaceS : will make the user face South')
@@ -63,7 +70,6 @@ def help():
             print('Use(item)on(enviroment) : will allow you to use object X, if possible')
             print('Giveup : will end game')
             print('Insperation : will show you who your getting back to')
-            # give user opt to repeat the tutorial
             user.first_try = input('Do you want the tutorial repeated? (Y/N) ')
             tut()            
 
@@ -79,8 +85,8 @@ user_prompt = bc.LIGHT_BLUE
 helper = bc.GREEN
 
 # Main
-username = 'H'#input('What is your name? ')
-tutorial = 'N'#input('Do you want the tutorial?(Y/N) ')
+username = input('What is your name? ')
+tutorial = input('Do you want the tutorial?(Y/N) ')
 
 user = txtadv.Player(username, tutorial, 0)
 
@@ -91,25 +97,14 @@ positions = ["north", "east", "south", "west"]
 random.shuffle(positions)
 r1.inv.position[positions[0]] = 1
 
-
-# def opening_naration():
-#     input((colorize('You wake up in darkness. There is 1 thing on your mind Escape!', bc.RED)))
-#     input((colorize('The Room is almost completely black, there is however a small column of light.', bc.RED)))
-
-# opening_naration()
-
-def colour_text(text, color):
-    input(colorize(text, color))
-
+tut()
 
 colour_text('You wake up in darkness. There is 1 thing on your mind Escape!', narrator)
 colour_text('The Room is almost completely black, there is however a small column of light.', narrator)
 
 
-
 while user.levels_complete < 1:
 
-    # fresh_input = colour_text('Your Move: ', user_prompt)
     fresh_input = input()
 
     if fresh_input in user_direction:
@@ -151,8 +146,6 @@ while user.levels_complete < 1:
         print('Invalid promtp. Please Try again.')
 
 
-
-    
 current_datetime = datetime.datetime.now()
 
 if user.levels_complete == 1:
